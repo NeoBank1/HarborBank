@@ -5,8 +5,11 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  optimizeDeps: {
-    include: ['@emotion/styled'],
+  base: '/bankdash',
+  build: {
+    rollupOptions: {
+      input: './index.html', // Explicitly specify the entry point
+    },
   },
   plugins: [
     tsconfigPaths(),
@@ -18,13 +21,9 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/bankdash',
-
-  //   preview: {
-  //     port: 5000,
-  //   },
   server: {
     host: '0.0.0.0',
     port: 3000,
   },
 });
+
